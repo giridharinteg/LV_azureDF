@@ -1,0 +1,24 @@
+{
+	"name": "blobtrigger1",
+	"properties": {
+		"description": "it triggers a pipeline whenas soon as a blob is loaded into a source container",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CopyfromBlobtoBlob-gg",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/giriinput/blobs/data",
+			"scope": "/subscriptions/c180b756-b771-4d37-85c1-9a9591397cfd/resourceGroups/DEMORG/providers/Microsoft.Storage/storageAccounts/giristorageacc",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
