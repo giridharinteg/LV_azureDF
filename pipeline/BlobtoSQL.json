@@ -50,54 +50,17 @@
 					},
 					"activities": [
 						{
-							"name": "Copy data from blobtosqldb",
-							"type": "Copy",
+							"name": "Set variable1",
+							"type": "SetVariable",
 							"dependsOn": [],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
 							"userProperties": [],
 							"typeProperties": {
-								"source": {
-									"type": "DelimitedTextSource",
-									"storeSettings": {
-										"type": "AzureBlobStorageReadSettings",
-										"recursive": true,
-										"wildcardFileName": {
-											"value": "@{item().name}",
-											"type": "Expression"
-										},
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"sink": {
-									"type": "AzureSqlSink",
-									"tableOption": "autoCreate"
-								},
-								"enableStaging": false
-							},
-							"inputs": [
-								{
-									"referenceName": "sourcefiles",
-									"type": "DatasetReference"
+								"variableName": "dummy",
+								"value": {
+									"value": "@item().name",
+									"type": "Expression"
 								}
-							],
-							"outputs": [
-								{
-									"referenceName": "AzureSqlTable1",
-									"type": "DatasetReference",
-									"parameters": {
-										"tablename": "@{item().name}"
-									}
-								}
-							]
+							}
 						}
 					]
 				}
